@@ -1,0 +1,30 @@
+select first_name, salary, commission_pct , salary*ifnull(commission_pct,0) from employees ;
+ select first_name, salary, commission_pct , salary*ifnull(commission_pct,0) "Total Salary" from employees ;
+
+select first_name, salary, commission_pct , salary*ifnull(commission_pct,0) "Total Salary" from employees order by first_name;
+
+select department_id, first_name, salary from employees order by department_id asc,salary desc;
+
+select department_id, sum(salary) from employees group by department_id;
+select department_id, count(first_name) "no of employees" from employees group by department_id;
+
+select department_id, count(first_name) "no of employees" from employees group by department_id having count(first_name)>20;
+if columns are different or you want to put any other condition you can use on
+select first_name, department_name from employees inner join departments on employees.department_id=departments.department_id;
+
+using- for same name of columns and data types
+select first_name, department_name from employees inner join departments using(department_id);
+
+
+
+ select table1.rollno, name, marks from table1 left join  table2  on table1.rollno=table2.rollno;
+
+
+select table1.rollno, name, marks from table1 right join  table2  on table1.rollno=table2.rollno;
+
+ select concat(e.first_name, e.last_name) employee,
+ concat(m.first_name, m.last_name) manager
+ from employees e
+ inner join
+ employees m on m.employee_id=e.manager_id;
+
