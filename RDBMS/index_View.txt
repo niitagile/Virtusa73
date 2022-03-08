@@ -1,0 +1,222 @@
+
+     create view employeeView as
+    -> select employee_id, first_name, department_id, department_name from employees join departments using (department_id);
+
+select * from employeeView;
+    create view daysofweek (day) as select 'Mon' UNION select 'Tue';
+
+    select * from daysofweek;
+
+mysql> create table student(rollno int, name varchar(20));
+Query OK, 0 rows affected (2.20 sec)
+
+mysql> insert into student values(1, 'Kavish');
+Query OK, 1 row affected (1.19 sec)
+
+mysql> insert into student values(2, 'Amrit');
+Query OK, 1 row affected (0.56 sec)
+
+mysql> insert into student values(3, 'Babit');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> create view studentView as select * from student;
+Query OK, 0 rows affected (0.77 sec)
+
+mysql> select * from studentView;
++--------+--------+
+| rollno | name   |
++--------+--------+
+|      1 | Kavish |
+|      2 | Amrit  |
+|      3 | Babit  |
++--------+--------+
+3 rows in set (0.00 sec)
+
+mysql> update studentView set name='Babita' where rollno=3;
+Query OK, 1 row affected (1.22 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from studentView;
++--------+--------+
+| rollno | name   |
++--------+--------+
+|      1 | Kavish |
+|      2 | Amrit  |
+|      3 | Babita |
++--------+--------+
+3 rows in set (0.10 sec)
+
+mysql> select * from student;
++--------+--------+
+| rollno | name   |
++--------+--------+
+|      1 | Kavish |
+|      2 | Amrit  |
+|      3 | Babita |
++--------+--------+
+3 rows in set (0.00 sec)
+
+mysql> update studentView set name='Babita' where rollno=3;
+Query OK, 1 row affected (1.22 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from studentView;
++--------+--------+
+| rollno | name   |
++--------+--------+
+|      1 | Kavish |
+|      2 | Amrit  |
+|      3 | Babita |
++--------+--------+
+3 rows in set (0.10 sec)
+
+mysql> select * from student;
++--------+--------+
+| rollno | name   |
++--------+--------+
+|      1 | Kavish |
+|      2 | Amrit  |
+|      3 | Babita |
++--------+--------+
+3 rows in set (0.00 sec)
+
+mysql> delete from studentView where rollno=2;
+Query OK, 1 row affected (0.61 sec)
+
+mysql> select * from student;
++--------+--------+
+| rollno | name   |
++--------+--------+
+|      1 | Kavish |
+|      3 | Babita |
++--------+--------+
+2 rows in set (0.03 sec)
+
+mysql> insert into studentView values(2,'Anisha');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select * from student;
++--------+--------+
+| rollno | name   |
++--------+--------+
+|      1 | Kavish |
+|      3 | Babita |
+|      2 | Anisha |
++--------+--------+
+3 rows in set (0.00 sec)
+
+mysql>
+mysql> create view studentView2 as select * from student with check option;
+
+mysql> show full tables where table_type='VIEW';
+
+
+
+mysql> create index idx_stud_rollno on student(rollno);
+Query OK, 0 rows affected (1.67 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> explain select * from student where rollno=1;
++----+-------------+---------+------------+------+-----------------+-----------------+---------+-------+------+----------+-------+
+| id | select_type | table   | partitions | type | possible_keys   | key             | key_len | ref   | rows | filtered | Extra |
++----+-------------+---------+------------+------+-----------------+-----------------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | student | NULL       | ref  | idx_stud_rollno | idx_stud_rollno | 5       | const |    1 |   100.00 | NULL  |
++----+-------------+---------+------------+------+-----------------+-----------------+---------+-------+------+----------+-------+
+1 row in set, 1 warning (0.14 sec)
+
+mysql> drop index idx_stud_rollno on student;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
